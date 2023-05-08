@@ -1,11 +1,71 @@
 {% extends 'base.html' %} {% block content %}
+<main class="container mt-5">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<form
+				method="POST"
+				class="card card-body border-dark text-secondary"
+			>
+				<h2 class="display-4 fw-semibold text-center">Signup</h2>
+				<hr />
+				<strong class="text-center text-danger">{{error}}</strong>
 
-<h1>Signup</h1>
-<hr />
-{{error}}
-<form method="POST">
-	{% csrf_token %} {{form.as_p}}
-	<button>signup</button>
-</form>
+				{% csrf_token %}
+
+				<div class="my-3">
+					<label
+						class="fw-bolder fs-6"
+						for="username"
+						>Nombre de usuario:</label
+					>
+					<input
+						type="text"
+						name="username"
+						id="username"
+						placeholder="Nombre de usuario"
+						class="form-control"
+						required
+					/>
+				</div>
+
+				<div class="mb-3">
+					<label
+						class="fw-bolder fs-6"
+						for="password1"
+						>Password:</label
+					>
+					<input
+						type="password"
+						name="password1"
+						id="password1"
+						placeholder="Contraseña"
+						class="form-control"
+						required
+					/>
+				</div>
+
+				<div class="mb-3">
+					<label
+						class="fw-bolder fs-6"
+						for="password2"
+						>Confirmacion de password:</label
+					>
+					<input
+						type="password"
+						name="password2"
+						id="password2"
+						placeholder="Confirma password"
+						class="form-control"
+						required
+					/>
+				</div>
+
+				<div class="text-center mt-5">
+					<button class="btn btn-dark py-2 px-5">Signup</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
 
 {% endblock %}

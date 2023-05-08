@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<main class="container mt-5">
-	<section class="card card-body">
-		<h1 class="display-1 fw-bolder text-center">Django App</h1>
+<main class="container card border-dark mt-5 py-5 px-3">
+	<section class="card-body text-secondary">
+		<h1 class="display-1 fw-semibold text-center">Django App</h1>
 		<hr />
 
-		<p class="container">
+		<p class="container card-text p-3">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ipsa et
 			voluptates ad est autem officia at tempora voluptatum repellendus! Fugiat
 			sed earum sequi autem asperiores illum a adipisci consectetur?
@@ -14,6 +14,16 @@
 			animi voluptate quo in saepe aut adipisci tempora explicabo. Rem eveniet
 			libero temporibus distinctio.
 		</p>
+		{% if user.is_authenticated%}
+		<div class="text-center mt-5">
+			<a
+				class="btn btn-dark py-2 px-4"
+				href="/tasks"
+			>
+				Ir a Tasks
+			</a>
+		</div>
+		{% else %}
 		<div class="text-center mt-5">
 			<a
 				class="btn btn-dark py-2 px-4 mx-5"
@@ -28,6 +38,7 @@
 				Signup
 			</a>
 		</div>
+		{% endif %}
 	</section>
 </main>
 {% endblock %}

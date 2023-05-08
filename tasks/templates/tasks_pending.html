@@ -1,21 +1,36 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Tareas pendientes</h1>
-<hr />
+<main class="container mt-5">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<h2 class="display-4 fw-semibold text-center text-secondary">
+				Tareas pendientes
+			</h2>
+			<hr />
 
-<ul>
-	{% for task in tasks %}
-	<li>
-		<a href="{% url 'task_detail' task.id %}">
-			{% if task.important %}
-			<h3>{{task.title}} ⚠️</h3>
-			{% else %}
-			<h3>{{task.title}}</h3>
-			{% endif %}
-			<p>{{task.description}}</p>
-			<p>{{task.user.username}}</p>
-		</a>
-	</li>
-	{% endfor %}
-</ul>
+			<ul class="list-group mt-5">
+				{% for task in tasks %}
+				<li class="list-group-item border-dark">
+					<a
+						class="nav-link"
+						href="{% url 'task_detail' task.id %}"
+					>
+						<header class="d-flex justify-content-between align-items-center">
+							{% if task.important %}
+							<h3 class="fs-4 text-warning">{{task.title}} ⚠️</h3>
+							{% else %}
+							<h3 class="fs-4">{{task.title}}</h3>
+							{% endif %}
+							<strong class="text-end text-secondary"
+								>{{task.user.username}}</strong
+							>
+						</header>
+						<p>{{task.description}}</p>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</main>
 
 {% endblock %}

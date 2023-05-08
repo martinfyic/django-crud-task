@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -24,8 +25,8 @@
 			<div class="container">
 				<a
 					class="navbar-brand"
-					href="#"
-					>Navbar</a
+					href="/"
+					>django</a
 				>
 				<button
 					class="navbar-toggler"
@@ -47,7 +48,7 @@
 							<a
 								class="nav-link"
 								href="/"
-								>Home</a
+								>Inicio</a
 							>
 						</li>
 						{% if user.is_authenticated%}
@@ -62,14 +63,14 @@
 							<a
 								class="nav-link"
 								href="{% url 'tasks_complete' %}"
-								>Complete</a
+								>Completados</a
 							>
 						</li>
 						<li class="nav-item">
 							<a
 								class="nav-link"
 								href="{% url 'create_task' %}"
-								>Create Tasks</a
+								>Crear Tasks</a
 							>
 						</li>
 						<li class="nav-item">

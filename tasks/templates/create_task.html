@@ -1,11 +1,22 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Create Task</h1>
-<hr />
 
-{{ error }}
-<form method="POST">
-	{% csrf_token %} {{form.as_p}}
-	<button>Create</button>
-</form>
+<main class="container mt-5">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<form
+				method="POST"
+				class="card card-body border-dark text-secondary"
+			>
+				<h2 class="display-4 fw-semibold text-center">Crear Task</h2>
+				<hr />
+				<strong class="text-center text-danger">{{error}}</strong>
+				{% csrf_token %} {{form.as_p}}
+				<div class="text-center mt-5">
+					<button class="btn btn-dark py-2 px-5">Crear</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
 
 {% endblock %}

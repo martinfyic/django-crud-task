@@ -1,28 +1,44 @@
 {% extends 'base.html' %} {% block content %}
-<h1>{{task.title}}</h1>
-<hr />
+<main class="container mt-5 me-auto">
+	<div class="row">
+		<div class="col-md-4 offset-md-4">
+			<form
+				method="POST"
+				class="card card-body border-dark text-secondary"
+			>
+				<h3 class="display-6 fw-semibold text-center">Detalle de Task</h3>
+				<hr />
+				<strong class="text-center text-danger">{{error}}</strong>
+				{% csrf_token %} {{form.as_p}}
+				<button class="btn btn-primary mb-3">Editar Task</button>
+				<a
+					href="/tasks"
+					class="btn btn-outline-dark mb-3"
+					>Cancelar</a
+				>
+			</form>
 
-{{error}}
+			<div class="d-flex justify-content-between align-items-center mt-3">
+				<form
+					action="{% url 'task_delete' task.id %}"
+					method="POST"
+				>
+					{% csrf_token %}
+					<button class="btn btn-outline-danger px-4 py-2">
+						Eliminar Task
+					</button>
+				</form>
 
-<form method="POST">
-	{% csrf_token %} {{form.as_p}}
-	<button>Update</button>
-</form>
-
-<form
-	action="{% url 'task_complete' task.id %}"
-	method="POST"
->
-	{% csrf_token %}
-	<button>Completed</button>
-</form>
-
-<form
-	action="{% url 'task_delete' task.id %}"
-	method="POST"
->
-	{% csrf_token %}
-	<button>Delete</button>
-</form>
+				<form
+					action="{% url 'task_complete' task.id %}"
+					method="POST"
+				>
+					{% csrf_token %}
+					<button class="btn btn-dark px-4 py-2">Completar Task</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>
 
 {% endblock %}
