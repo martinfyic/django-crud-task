@@ -9,29 +9,32 @@ from .forms import TaskForm
 from .models import Task
 
 # Create your views here.
+
+
 def home(request):
     return render(request, 'home.html')
 
 
 def signup(request):
     if request.method == 'GET':
-         return render(request, 'signup.html', { 'form': UserCreationForm })
+        return render(request, 'signup.html', {'form': UserCreationForm})
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
-                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
+                user = User.objects.create_user(
+                    username=request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
                 return redirect('tasks_pending')
             except IntegrityError:
-                return render(request, 'signup.html', { 
-                    'form': UserCreationForm, 
+                return render(request, 'signup.html', {
+                    'form': UserCreationForm,
                     'error': 'El usuario ya existe'
                 })
         else:
-            return render(request, 'signup.html', { 
-                'form': UserCreationForm, 
-                'error': 'Password no coincide' 
+            return render(request, 'signup.html', {
+                'form': UserCreationForm,
+                'error': 'Password no coincide'
             })
 
 
@@ -42,19 +45,20 @@ def signout(request):
 
 
 def signin(request):
-   if request.method == 'GET':
+    if request.method == 'GET':
         return render(request, 'signin.html', {
-        'form': AuthenticationForm
+            'form': AuthenticationForm
         })
-   else:
-       user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-       
-       if user is None:
-           return render(request, 'signin.html', {
-            'form': AuthenticationForm,
-            'error': 'Usuario o contraseña incorrecto'
-           })
-       else:
+    else:
+        user = authenticate(
+            request, username=request.POST['username'], password=request.POST['password'])
+
+        if user is None:
+            return render(request, 'signin.html', {
+                'form': AuthenticationForm,
+                'error': 'Usuario o contraseña incorrecto'
+            })
+        else:
             login(request, user)
             return redirect('tasks_pending')
 
@@ -69,7 +73,8 @@ def tasks_pending(request):
 
 @login_required
 def tasks_complete(request):
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('datecompleted')
+    tasks = Task.objects.filter(
+        user=request.user, datecompleted__isnull=False).order_by('datecompleted')
     return render(request, 'tasks_complete.html', {
         'tasks': tasks
     })
@@ -79,7 +84,7 @@ def tasks_complete(request):
 def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html', {
-        'form': TaskForm
+            'form': TaskForm
         })
     else:
         try:
@@ -89,7 +94,7 @@ def create_task(request):
             new_task.save()
             return redirect('tasks_pending')
         except ValueError:
-             return render(request, 'create_task.html', {
+            return render(request, 'create_task.html', {
                 'form': TaskForm,
                 'error': 'Los datos no son validos'
             })
@@ -112,10 +117,10 @@ def task_detail(request, id):
             return redirect('tasks_pending')
         except ValueError:
             return render(request, 'task_detail.html', {
-            'task': task,
-            'form': form,
-            'error': 'Los datos no son validos'
-        })
+                'task': task,
+                'form': form,
+                'error': 'Los datos no son validos'
+            })
 
 
 @login_required
@@ -125,7 +130,7 @@ def task_complete(request, id):
         task.datecompleted = timezone.now()
         task.save()
         return redirect('tasks_pending')
-    
+
 
 @login_required
 def task_delete(request, id):
