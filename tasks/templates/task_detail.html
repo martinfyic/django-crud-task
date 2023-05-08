@@ -4,16 +4,23 @@
 		<div class="col-md-4 offset-md-4">
 			<form
 				method="POST"
-				class="card card-body border-dark text-secondary"
+				class="card card-body border-dark text-secondary bg-body-tertiary shadow"
 			>
-				<h3 class="display-6 fw-semibold text-center">Detalle de Task</h3>
+				<h3 class="display-6 fw-semibold text-center text-success-emphasis">
+					Detalle de Task
+				</h3>
 				<hr />
-				<strong class="text-center text-danger">{{error}}</strong>
-				{% csrf_token %} {{form.as_p}}
-				<button class="btn btn-primary mb-3">Editar Task</button>
+				{% if error %}
+				<strong
+					class="alert alert-danger text-center"
+					role="alert"
+					>{{error}}</strong
+				>
+				{% endif %} {% csrf_token %} {{form.as_p}}
+				<button class="btn btn-primary mb-3 shadow">Editar Task</button>
 				<a
 					href="/tasks"
-					class="btn btn-outline-dark mb-3"
+					class="btn btn-outline-dark mb-3 shadow"
 					>Cancelar</a
 				>
 			</form>
@@ -24,7 +31,7 @@
 					method="POST"
 				>
 					{% csrf_token %}
-					<button class="btn btn-outline-danger px-4 py-2">
+					<button class="btn btn-outline-danger px-4 py-2 shadow">
 						Eliminar Task
 					</button>
 				</form>
@@ -34,7 +41,7 @@
 					method="POST"
 				>
 					{% csrf_token %}
-					<button class="btn btn-dark px-4 py-2">Completar Task</button>
+					<button class="btn btn-dark px-4 py-2 shadow">Completar Task</button>
 				</form>
 			</div>
 		</div>

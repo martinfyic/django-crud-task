@@ -2,21 +2,23 @@
 <main class="container my-5">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
-			<h2 class="display-4 fw-semibold text-center text-secondary">
+			<h2 class="display-4 fw-semibold text-center text-success-emphasis">
 				Tareas pendientes
 			</h2>
 			<hr />
 
 			<ul class="list-group mt-5">
 				{% for task in tasks %}
-				<li class="list-group-item border-dark">
+				<li class="list-group-item border-dark bg-info-subtle shadow">
 					<a
 						class="nav-link"
 						href="{% url 'task_detail' task.id %}"
 					>
 						<header class="d-flex justify-content-between align-items-center">
 							{% if task.important %}
-							<h3 class="fs-4 text-warning">{{task.title}} ⚠️</h3>
+							<h3 class="fs-4 text-danger-emphasis text-uppercase">
+								{{task.title}} ⚠️
+							</h3>
 							{% else %}
 							<h3 class="fs-4">{{task.title}}</h3>
 							{% endif %}

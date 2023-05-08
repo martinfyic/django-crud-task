@@ -5,12 +5,19 @@
 		<div class="col-md-4 offset-md-4">
 			<form
 				method="POST"
-				class="card card-body border-dark text-secondary"
+				class="card card-body border-dark text-secondary bg-body-tertiary shadow"
 			>
-				<h2 class="display-4 fw-semibold text-center">Crear Task</h2>
+				<h2 class="display-4 fw-semibold text-center text-success-emphasis">
+					Crear Task
+				</h2>
 				<hr />
-				<strong class="text-center text-danger">{{error}}</strong>
-				{% csrf_token %} {{form.as_p}}
+				{% if error %}
+				<strong
+					class="alert alert-danger text-center"
+					role="alert"
+					>{{error}}</strong
+				>
+				{% endif %} {% csrf_token %} {{form.as_p}}
 				<div class="text-center mt-5">
 					<button class="btn btn-dark py-2 px-5">Crear</button>
 				</div>

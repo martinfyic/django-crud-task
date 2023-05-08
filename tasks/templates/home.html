@@ -1,23 +1,45 @@
 {% extends 'base.html' %} {% block content %}
-<main class="container card border-dark my-5 py-5 px-3">
+<main class="container card border-dark my-5 py-5 px-3 bg-body-tertiary shadow">
 	<section class="card-body text-secondary">
-		<h1 class="display-1 fw-semibold text-center">Django App</h1>
+		<h1 class="display-1 fw-semibold text-center text-success-emphasis">
+			Django Tasks
+		</h1>
 		<hr />
 
-		<p class="container card-text p-3">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ipsa et
-			voluptates ad est autem officia at tempora voluptatum repellendus! Fugiat
-			sed earum sequi autem asperiores illum a adipisci consectetur?
-			Perspiciatis vitae adipisci ut nihil voluptatem minima sed quam
-			accusantium? Soluta ducimus recusandae nemo dolorum. Vitae commodi soluta
-			nobis possimus consectetur quasi. Dolorem libero recusandae, reprehenderit
-			animi voluptate quo in saepe aut adipisci tempora explicabo. Rem eveniet
-			libero temporibus distinctio.
+		<p class="container card-text px-3">
+			Este proyecto de práctica de Python utilizando Django es un ejemplo de
+			aplicación web que utiliza una base de datos SQLite3 y la librería Jinja
+			para generar plantillas HTML. La aplicación cuenta con un CRUD (acrónimo
+			en inglés de "Crear, Leer, Actualizar y Eliminar") que permite al usuario
+			agregar, modificar, eliminar y leer las tareas ("tasks") creadas en la
+			aplicación.
 		</p>
+		<p class="container card-text px-3">
+			La base de datos SQLite3 es una base de datos relacional que se integra
+			fácilmente con Django, lo que permite a los usuarios almacenar y recuperar
+			datos de manera eficiente. Además, la librería Jinja es una herramienta
+			muy útil para generar plantillas HTML de manera dinámica en función de los
+			datos almacenados en la base de datos.
+		</p>
+		<p class="container card-text px-3">
+			El CRUD de la aplicación permite a los usuarios crear nuevas tareas,
+			actualizar las tareas existentes, eliminar tareas no deseadas y ver las
+			tareas existentes en la base de datos. Con esta funcionalidad, los
+			usuarios pueden manejar sus tareas de manera eficiente y mantener un
+			seguimiento de su progreso.
+		</p>
+		<p class="container card-text px-3">
+			En resumen, este proyecto de práctica de Python con Django es una
+			excelente manera de aprender sobre el uso de bases de datos SQLite3 y
+			librerías como Jinja para crear aplicaciones web interactivas y dinámicas.
+			Además, la implementación de un CRUD proporciona una funcionalidad
+			esencial para el manejo de datos en cualquier aplicación.
+		</p>
+
 		{% if user.is_authenticated%}
 		<div class="text-center mt-5">
 			<a
-				class="btn btn-dark py-2 px-4"
+				class="btn btn-dark py-2 px-4 shadow"
 				href="/tasks"
 			>
 				Ir a Tasks
@@ -26,13 +48,13 @@
 		{% else %}
 		<div class="text-center mt-5">
 			<a
-				class="btn btn-dark py-2 px-4 mx-5"
+				class="btn btn-dark py-2 px-4 mx-5 shadow"
 				href="/signin"
 			>
 				Signin
 			</a>
 			<a
-				class="btn btn-dark py-2 px-4 mx-5"
+				class="btn btn-dark py-2 px-4 mx-5 shadow"
 				href="/signup"
 			>
 				Signup
