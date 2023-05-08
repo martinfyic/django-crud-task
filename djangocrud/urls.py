@@ -24,7 +24,10 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('signout/', views.signout, name='signout'),
     path('signin/', views.signin, name='signin'),
-    path('tasks/', views.tasks, name='tasks'),
+    path('tasks/', views.tasks_pending, name='tasks_pending'),
+    path('tasks/complete', views.tasks_complete, name='tasks_complete'),
     path('tasks/create/', views.create_task, name='create_task'),
     path('tasks/<int:id>', views.task_detail, name='task_detail'),
+    path('tasks/<int:id>/complete', views.task_complete, name='task_complete'),
+    path('tasks/<int:id>/delete', views.task_delete, name='task_delete'),
 ]
