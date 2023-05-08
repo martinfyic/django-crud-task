@@ -1,14 +1,33 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Home 🏠</h1>
-<hr />
+<main class="container mt-5">
+	<section class="card card-body">
+		<h1 class="display-1 fw-bolder text-center">Django App</h1>
+		<hr />
 
-<p>
-	Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ipsa et
-	voluptates ad est autem officia at tempora voluptatum repellendus! Fugiat sed
-	earum sequi autem asperiores illum a adipisci consectetur? Perspiciatis vitae
-	adipisci ut nihil voluptatem minima sed quam accusantium? Soluta ducimus
-	recusandae nemo dolorum. Vitae commodi soluta nobis possimus consectetur
-	quasi. Dolorem libero recusandae, reprehenderit animi voluptate quo in saepe
-	aut adipisci tempora explicabo. Rem eveniet libero temporibus distinctio.
-</p>
+		<p class="container">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ipsa et
+			voluptates ad est autem officia at tempora voluptatum repellendus! Fugiat
+			sed earum sequi autem asperiores illum a adipisci consectetur?
+			Perspiciatis vitae adipisci ut nihil voluptatem minima sed quam
+			accusantium? Soluta ducimus recusandae nemo dolorum. Vitae commodi soluta
+			nobis possimus consectetur quasi. Dolorem libero recusandae, reprehenderit
+			animi voluptate quo in saepe aut adipisci tempora explicabo. Rem eveniet
+			libero temporibus distinctio.
+		</p>
+		<div class="text-center mt-5">
+			<a
+				class="btn btn-dark py-2 px-4 mx-5"
+				href="/signin"
+			>
+				Signin
+			</a>
+			<a
+				class="btn btn-dark py-2 px-4 mx-5"
+				href="/signup"
+			>
+				Signup
+			</a>
+		</div>
+	</section>
+</main>
 {% endblock %}
